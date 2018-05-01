@@ -23,6 +23,16 @@
   font-size: large;
 }
 
+
+._img{
+  margin :10px;
+}
+
+._wid{
+  width: 20%;
+  margin-bottom: 5px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
