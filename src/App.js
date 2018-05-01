@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
+
 import axios from 'axios'
+
 import {Button} from './Components/button';
 import {Input} from './Components/input';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import {api_data} from './action_creators/api_data';
+
+import {Reducer} from './Reducers/reducers';
 
 
 class App extends Component {
@@ -12,22 +21,33 @@ class App extends Component {
 
   this.state = {
     username: '',
-    avatar_url:''
+    data :[]
   }
  }
 
+ componentWillMount(){
+  console.log(this);
+ }
+
+ componentDidMount(){
+  console.log(this);
+ }
 
  handleClick(){
 
   let url_ = "https://api.github.com/users/"+ this.state.username;
-  console.log(url_);
+
   axios.get(url_)
-    .then(response => response.data.avatar_url)
-    .then((avatar_url) => {
-      this.setState({
-        avatar_url: avatar_url
-      })
-    })
+    .then(response => response.data)
+    .then((response) => {
+    
+      let data = this.state.data.concat(response)[0];
+      this.setState({data : data})
+      this.props.api_data(this.state.data);
+
+    }).catch((err) => { console.log(err); });
+
+    
  }
 
  handleChange(event){
@@ -38,22 +58,29 @@ class App extends Component {
 
   render() {
 
-    let avatar_;
-    if(this.state.avatar_url != '')
-           avatar_ =  <img src={this.state.avatar_url}  className = "_img img-responsive" alt="Smiley face" />
-      else {
-           avatar_ = '';
-      }
+    console.log('parsed data',this.props.data);
  
     return (
       <div className="App">
 
        <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
        <Button  onClick = {(e)=> {this.handleClick(e)}}/>
-        {avatar_}
       </div>
     );
   }
 }
 
-export default App;
+
+const mapStateToProps = (state) => {
+  return{
+    'data':state.data
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({api_data}, dispatch);
+}
+
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
+
