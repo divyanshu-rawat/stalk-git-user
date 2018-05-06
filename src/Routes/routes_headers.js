@@ -6,11 +6,12 @@ function Header(){
   
 return(
     
-   <div>
+   <div className = "_mg">
     <nav>
       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/description'>Description</Link></li>
+        <li><Link to='/picture'>Profile Picture</Link></li>
       </ul>
     </nav>
   </div>

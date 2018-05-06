@@ -26,6 +26,7 @@ const Root = ({ store }) => (
     <Router>
      <Switch>
       <Route exact path="/description" render={() => <Description data = {store.getState()} />}/>
+      <Route exact path="/picture" render={() =>     <Picture data = {store.getState()} />}/>
       <Route path="/" component={Main} />
 
      </Switch>
@@ -34,7 +35,7 @@ const Root = ({ store }) => (
 )
 
 ReactDOM.render(
-  <Root store={store} />,
+  <Root store={store}/>,
   document.getElementById('root')
 )
 

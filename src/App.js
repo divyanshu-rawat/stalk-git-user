@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import {Button} from './Components/button';
 import {Input} from './Components/input';
-import {Picture} from './Components/profile_pic_component';
+
 
 
 import { connect } from 'react-redux';
@@ -61,7 +61,6 @@ class App extends React.Component {
 
        <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
        <Button  onClick = {(e)=> {this.handleClick(e)}}/>
-       <Picture data = {this.state.data}/>
        <Header />
 
       </div>

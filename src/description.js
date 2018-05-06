@@ -12,19 +12,9 @@ import {Bio} from './Components/bio';
 
 export class Description extends React.Component{
 
-	constructor(props){
-		super(props)
-	}
-
-	inc_counter(){
-		console.log(this.props.data.GithubReducer.data);
-		console.log(this.props.data.GithubReducer);
-		console.log(this.props.data);
-	}
-
 	render(){
 		return(
-				       <Bio data = {this.props.data.GithubReducer.data} />
+				  <Bio data = {this.props.data.GithubReducer.data} />
 		)
 	}
 }
