@@ -7,10 +7,12 @@ import {Button} from './Components/button';
 import {Input} from './Components/input';
 import {Picture} from './Components/profile_pic_component';
 
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import {api_data} from './action_creators/api_data';
+import Header from './Routes/routes_headers';
 
 
 class App extends React.Component {
@@ -22,6 +24,10 @@ class App extends React.Component {
     username: '',
     data :{}
   }
+ }
+
+ ComponentDidUpdate(){
+  console.log('new state', this);
  }
 
 
@@ -48,7 +54,7 @@ class App extends React.Component {
 
   render() {
 
-    console.log('parsed data',this.state.data);
+    console.log('parsed data',this);
  
     return (
       <div className="App">
@@ -56,6 +62,8 @@ class App extends React.Component {
        <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
        <Button  onClick = {(e)=> {this.handleClick(e)}}/>
        <Picture data = {this.state.data}/>
+       <Header />
+
       </div>
     );
   }

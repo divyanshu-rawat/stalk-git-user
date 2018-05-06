@@ -4,7 +4,7 @@ const intial_state = {
 	count: 0
 }
 
-export const Counter = (state = intial_state,action) =>{
+export const CounterReducer = (state = intial_state,action) =>{
 
 	switch(action.type){
 

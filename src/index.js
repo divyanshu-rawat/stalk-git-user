@@ -1,27 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Main from './Main';
 
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
 import {Picture} from './Components/profile_pic_component';
 
 import { combineReducers } from 'redux'
-import {Reducer} from './Reducers/reducers';
-import {Counter} from './Reducers/counter_reducer';
+import {GithubReducer} from './Reducers/reducers';
+import {CounterReducer} from './Reducers/counter_reducer';
+import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
+// import {getRoutes} from './Routes/routes';
+import {Description} from './description';
+import Main from './Main';
 
 
-// const rootReducer = combineReducers({ Counter, Reducer });
 
-const rootReducer = combineReducers({ Reducer });
+const rootReducer = combineReducers({ CounterReducer, GithubReducer });
+
+// const rootReducer = combineReducers({ Reducer });
 const store = createStore(rootReducer);
 
+const Root = ({ store }) => (
+  <Provider store={store}>
+    <Router>
+     <Switch>
+      <Route exact path="/description" render={() => <Description data = {store.getState()} />}/>
+      <Route path="/" component={Main} />
+
+     </Switch>
+    </Router>
+  </Provider>
+)
 
 ReactDOM.render(
-  <Provider store={store}>
-
-    <Main />
-  </Provider>, document.getElementById('root'));
+  <Root store={store} />,
+  document.getElementById('root')
+)
 
 

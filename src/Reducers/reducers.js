@@ -4,7 +4,7 @@ const intialState = {
 	data: {}
 }
 
-export const Reducer = (state = intialState , action) =>{
+export const GithubReducer = (state = intialState , action) =>{
 
 	console.log('In Reducer',action);
 	
