@@ -5,33 +5,25 @@ import axios from 'axios'
 
 import {Button} from './Components/button';
 import {Input} from './Components/input';
+import {Picture} from './Components/profile_pic_component';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import {api_data} from './action_creators/api_data';
 
-import {Reducer} from './Reducers/reducers';
 
-
-class App extends Component {
+class App extends React.Component {
 
  constructor(props){
   super(props);
 
   this.state = {
     username: '',
-    data :[]
+    data :{}
   }
  }
 
- componentWillMount(){
-  console.log(this);
- }
-
- componentDidMount(){
-  console.log(this);
- }
 
  handleClick(){
 
@@ -41,13 +33,11 @@ class App extends Component {
     .then(response => response.data)
     .then((response) => {
     
-      let data = this.state.data.concat(response)[0];
-      this.setState({data : data})
+      let data = response;
+      this.setState({data : data});
       this.props.api_data(this.state.data);
 
-    }).catch((err) => { console.log(err); });
-
-    
+    }).catch((err) => { console.log(err); });    
  }
 
  handleChange(event){
@@ -58,13 +48,14 @@ class App extends Component {
 
   render() {
 
-    console.log('parsed data',this.props.data);
+    console.log('parsed data',this.state.data);
  
     return (
       <div className="App">
 
        <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
        <Button  onClick = {(e)=> {this.handleClick(e)}}/>
+       <Picture data = {this.state.data}/>
       </div>
     );
   }
@@ -72,9 +63,7 @@ class App extends Component {
 
 
 const mapStateToProps = (state) => {
-  return{
-    'data':state.data
-  }
+  return state;
 }
 
 const mapDispatchToProps = (dispatch) => {

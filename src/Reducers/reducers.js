@@ -1,7 +1,7 @@
 
 
 const intialState = {
-	data: []
+	data: {}
 }
 
 export const Reducer = (state = intialState , action) =>{
