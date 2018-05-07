@@ -57,13 +57,21 @@ class App extends React.Component {
     console.log('parsed data',this);
  
     return (
+
+    <div>
+        <div>
+           <Header />
+        </div>
+
       <div className="App">
 
-       <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
-       <Button  onClick = {(e)=> {this.handleClick(e)}}/>
-       <Header />
+        <div className = "align-centre">
+         <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
+         <Button  onClick = {(e)=> {this.handleClick(e)}}/>
+        </div>
 
-      </div>
+       </div>
+    </div>
     );
   }
 }

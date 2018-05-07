@@ -6,6 +6,6 @@ import ReactDom from 'react-dom';
 
 export const Input = (props) => {
 	return(
-			<input className  = "form-control _wid" onChange = {props.onChange} /> 
+			<input className  = "form-control _wid _display-inline" onChange = {props.onChange} /> 
 	)
 }
