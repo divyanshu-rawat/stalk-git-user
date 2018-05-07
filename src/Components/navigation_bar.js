@@ -1,9 +1,16 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 export const Navbar = (props) => {
+
+	let user;
+   	if(Object.keys(props.data).length !== 0){
+    		user = (<a href="#" className = "_color"><span className="glyphicon glyphicon-user _user"></span>{props.data.name}</a>);
+    }
+
 	return(
 			
 			<nav className="navbar navbar-inverse">
@@ -21,9 +28,12 @@ export const Navbar = (props) => {
 
 			       	<li><Link to='/'>Home</Link></li>
 			        <li><Link to='/description'>Description</Link></li>
-			        <li><Link to='/picture'>Profile Picture</Link></li>
+			        <li><Link to='/profile'>Profile</Link></li>
 
 			      </ul>
+			      <ul className="nav navbar-nav navbar-right">
+				      <li>{user}</li>
+				    </ul>
 			    </div>
 			  </div>
 			</nav>

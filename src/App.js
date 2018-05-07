@@ -26,11 +26,6 @@ class App extends React.Component {
   }
  }
 
- ComponentDidUpdate(){
-  console.log('new state', this);
- }
-
-
  handleClick(){
 
   let url_ = "https://api.github.com/users/"+ this.state.username;
@@ -54,13 +49,13 @@ class App extends React.Component {
 
   render() {
 
-    console.log('parsed data',this);
+    // console.log('parsed data',this);
  
     return (
 
     <div>
         <div>
-           <Header />
+           <Header data = {this.props.GithubReducer.data}/>
         </div>
 
       <div className="App">

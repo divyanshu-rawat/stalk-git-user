@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom'
 import {Navbar} from '../Components/navigation_bar';
 
-function Header(){
+function Header(props){
   
 return(
 		<div>
-		  <Navbar />
+		  <Navbar data = {props.data}/>
 		</div>
 
 )

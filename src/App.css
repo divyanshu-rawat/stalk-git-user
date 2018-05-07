@@ -44,6 +44,12 @@
   text-align: center;
   margin-top: 20%;
 }
+._user{
+  margin-right:5px;
+}
+._color{
+  color: white !important;
+}
 
 
 @keyframes App-logo-spin {
