@@ -6,6 +6,7 @@ import ReactDom from 'react-dom';
 import Header from '../Routes/routes_headers';
 import axios from 'axios';
 import Moment from 'react-moment';
+import '../App.css';
 
 
 // import { connect } from 'react-redux';
@@ -48,19 +49,24 @@ export class Description extends React.Component{
 		let chart_pic;
 
 		if(Object.keys(data).length !== 0){
-			chart_pic = (<img src={chart} alt="Github chart" />);
+			chart_pic = (
+							<div className = "_m-top _text-align">
+								<h3>Contributions In The Last Year</h3>
+								<img src={chart} alt="Github chart" />
+						   </div>
+					);
 	    }
 
 		return(
 				  <div>
 				  		<Header data = {data}/>
 				  <div>
-				  		<div className = "_m-top">
 								{chart_pic}
-						</div>
 				  </div>
 
 				     <div className="custom-panel-css">
+
+
 					     {this.state.data.map((repo,index) => {
 					     	return(
 					     	   <div>
@@ -68,22 +74,34 @@ export class Description extends React.Component{
 
 							  		
 		  							<div className="panel panel-default _margin-top">
-			 					      <div className="panel-heading"><a href = {repo.html_url}> {repo.name} </a></div>
+			 					      <div className="panel-heading">
+			 					      	<a href = {repo.html_url}> {repo.name} </a>
+			 					      	<span className = "pull-right">Created On <Moment format="YYYY/MM/DD">{repo.created_at}</Moment></span>
+			 					      	</div>
 			 					    </div>
 
 			 					    <div>	
-			 					    	<h3>aaslakskslk</h3>
+			 					    	<h3>Project Description :</h3> <p> {repo.description}</p>
 			 					    </div>
 
 			 					    <div>
-			 					    	<h3>language</h3>
+			 					    	<h3>Language : </h3> <p>{repo.language}</p>
 			 					    </div>
 			 					    <div>
-			 					    	Started <Moment from={new Date()}>{repo.created_at}</Moment>
+
 			 					    </div>
 
 			 					    <div className="panel panel-default _margin-top">
-			 					      <div className="panel-heading"><a href = {repo.html_url}> {repo.name} </a></div>
+			 					      <div className="panel-heading _panel-padding">
+			 					      	<p className = "_zero_mr _text-align ">
+			 					      		<i className="fa fa-star pull-left" aria-hidden="true"><span className = "_mg-left">{repo.stargazers_count}</span></i>
+
+			 					      		<i class="fa fa-eye" aria-hidden="true"></i><span className = "_mg-left">{repo.watchers}</span>
+
+			 					      		<i className="fa fa-code-fork pull-right" aria-hidden="true"><span className = "_mg-left">{repo.forks_count}</span></i>
+
+			 					      	</p>
+			 					      </div>
 			 					    </div>
 
 							  	</div>

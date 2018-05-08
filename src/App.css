@@ -59,7 +59,7 @@
   box-shadow: 0 5px 5px rgba(0,0,0,0.25);
   background: #fff;
   border-radius: 2px; 
-  height: 300px;
+  height: auto;
   margin:4%;
 
 }
@@ -70,5 +70,22 @@
 
 .card-2:hover {
   box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+
+._mg-left{
+  margin-left: 6px;
+}
+
+._panel-padding{
+  padding: 6px 15px !important;
+  margin-top: auto;
+}
+
+._zero_mr{
+  margin:0px;
+}
+
+._text-align{
+  text-align: center;
 }
 
