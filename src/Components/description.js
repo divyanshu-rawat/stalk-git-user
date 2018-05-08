@@ -7,6 +7,7 @@ import Header from '../Routes/routes_headers';
 import axios from 'axios';
 import Moment from 'react-moment';
 import '../App.css';
+import { Link } from 'react-router-dom'
 
 
 // import { connect } from 'react-redux';
@@ -27,6 +28,7 @@ export class Description extends React.Component{
 	componentDidMount(){
 		  const data  = this.props.data.GithubReducer.data;
 		  const login = data.login;
+		  
 
 		  let url_ = "https://api.github.com/users/" + login + "/repos"
 		  axios.get(url_)
@@ -47,27 +49,20 @@ export class Description extends React.Component{
 		const login = data.login;
 		const chart = "http://ghchart.rshah.org/"+ login;
 		let chart_pic;
+		let _html;
 
 		if(Object.keys(data).length !== 0){
 			chart_pic = (
 							<div className = "_m-top _text-align">
 								<h3>Contributions In The Last Year</h3>
 								<img src={chart} alt="Github chart" />
-						   </div>
+						    </div>
 					);
 	    }
 
-		return(
-				  <div>
-				  		<Header data = {data}/>
-				  <div>
-								{chart_pic}
-				  </div>
+	    if(this.state.data.length > 1){
 
-				     <div className="custom-panel-css">
-
-
-					     {this.state.data.map((repo,index) => {
+	    	_html = this.state.data.map((repo,index) => {
 					     	return(
 					     	   <div>
 							  	<div className="card-2 col-lg-5 ">
@@ -96,7 +91,7 @@ export class Description extends React.Component{
 			 					      	<p className = "_zero_mr _text-align ">
 			 					      		<i className="fa fa-star pull-left" aria-hidden="true"><span className = "_mg-left">{repo.stargazers_count}</span></i>
 
-			 					      		<i class="fa fa-eye" aria-hidden="true"></i><span className = "_mg-left">{repo.watchers}</span>
+			 					      		<i className="fa fa-eye" aria-hidden="true"></i><span className = "_mg-left">{repo.watchers}</span>
 
 			 					      		<i className="fa fa-code-fork pull-right" aria-hidden="true"><span className = "_mg-left">{repo.forks_count}</span></i>
 
@@ -107,18 +102,27 @@ export class Description extends React.Component{
 							  	</div>
 							  </div>
 					     	)
-					     })}
-					   
-				    </div>
-					
+					     })
+	    }
+	    else{
+	    	_html = (
+		    		<div className = "_text-align">
+		    			<h3> Please Search The User In The <Link to='/'>Home</Link> Page. </h3>
+		    		</div>
+	    		)
+	    }
 
+		return(
+				  <div>
+				  	<Header data = {data}/>
+					  <div>
+							{chart_pic}
+					  </div>
+
+				     <div className="custom-panel-css">
+					     {_html}
+				    </div>
 			  	  </div>
 		)
 	}
 }
-
-
-  // <div className="panel panel-default">
-		// 					      <div className="panel-heading"><a href = {repo.html_url}> {repo.name} </a></div>
-		// 					      <div className="panel-body">{repo.description}</div>
-		// 					    </div>

@@ -4,7 +4,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import Header from '../Routes/routes_headers';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 
 export class Profile extends React.Component{
