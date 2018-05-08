@@ -7,6 +7,7 @@ import Header from '../Routes/routes_headers';
 
 
 export class Profile extends React.Component{
+	
 
 	render(){
 
@@ -15,8 +16,8 @@ export class Profile extends React.Component{
 		const user_name  = data.name;
 		const blog       = data.blog;
 		const bio        = data.bio;
-		const login      = data.login;
-		const chart      = "http://ghchart.rshah.org/"+ login;
+		
+
 		return(
 			<div>
 			<Header data = {data}/>
@@ -48,6 +49,4 @@ export class Profile extends React.Component{
 
 
 
-				/*<div className = "_m-top">
-					<img src={chart} alt="Github chart" />
-				</div>*/
+		

@@ -50,9 +50,25 @@
 ._color{
   color: white !important;
 }
-
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.custom-panel-css{
+  margin: 10px;
 }
+
+
+.card-2 {
+  box-shadow: 0 5px 5px rgba(0,0,0,0.25);
+  background: #fff;
+  border-radius: 2px; 
+  height: 300px;
+  margin:4%;
+
+}
+
+._margin-top{
+  margin-top: 2%;
+}
+
+.card-2:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25);
+}
+

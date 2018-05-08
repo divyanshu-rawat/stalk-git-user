@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import axios from 'axios'
+import axios from 'axios';
 
 import {Button} from './Components/button';
 import {Input} from './Components/input';
-
-
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import {api_data} from './action_creators/api_data';
 import Header from './Routes/routes_headers';
+import './App.css';
 
 
 class App extends React.Component {
