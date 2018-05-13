@@ -17,7 +17,7 @@ export const GithubReducer = (state = intialState , action) =>{
 			break;
 
 		default:
-			return state;
+			return { data: state.data };
 
 	}
 

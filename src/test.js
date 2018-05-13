@@ -4,6 +4,9 @@ import Root from './index';
 import {sum} from './Test-cases/sum';
 import axios from 'axios';
 
+import {GithubReducer} from './Reducers/reducers';
+
+
 it('renders without crashing', () => {
   const div = document.createElement('div');
   ReactDOM.render(<Root />, div);
@@ -29,7 +32,7 @@ function fetch_data(callback){
     .then((response) => {
     callback(response);
      
-   }).catch((err) => { console.log(err); });
+   }).catch((err) => { });
 }
 
 test('the login data from github api', done => {
@@ -49,7 +52,7 @@ function fetchData(){
     .then(response => response.data)
     .then((response) => {
        return response;
-   }).catch((err) => { console.log(err); });
+   }).catch((err) => {  });
 
 }
 
@@ -71,7 +74,36 @@ test('the organization URL data for github api', async () => {
 });
 
 
+// testing reducers
 
+describe('all reducer', () => {
+  it('should return the initial state');
+  it('should handle GET_API_DATA');
+});
+
+
+describe('GithubReducer', () => {
+  it('should return the initial state', () => {
+    expect(GithubReducer(undefined, {})).toEqual({ data: {} });
+  });
+
+
+  it('should handle GET_API_DATA', () => {
+    
+  	let data = fetchData().then((response) => {
+  		return response;
+  	});
+
+    const successAction = {
+      type: 'GET_GITHUB_API_DATA',
+      data: data,
+    };
+
+
+    expect(GithubReducer({}, successAction)).toEqual({ data: successAction.data });
+  });
+
+});
 
 
 

@@ -8,7 +8,6 @@ import {Profile} from './Components/profile_pic_component';
 
 import { combineReducers } from 'redux'
 import {GithubReducer} from './Reducers/reducers';
-import {CounterReducer} from './Reducers/counter_reducer';
 import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
 // import {getRoutes} from './Routes/routes';
 import {Description} from './Components/description';
@@ -16,9 +15,9 @@ import Main from './Main';
 
 
 
-const rootReducer = combineReducers({ CounterReducer, GithubReducer });
 
-// const rootReducer = combineReducers({ Reducer });
+
+const rootReducer = combineReducers({ GithubReducer });
 const store = createStore(rootReducer);
 
 const Root = ({ store }) => (
