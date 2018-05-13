@@ -32,13 +32,42 @@ function fetch_data(callback){
    }).catch((err) => { console.log(err); });
 }
 
-test('the data from github api', done => {
+test('the login data from github api', done => {
   function callback(data) {
     expect(data.login).toBe('divyanshu-rawat');
     done();
   }
 
   fetch_data(callback);
+});
+
+
+// Async test Method 2 by using promises.
+function fetchData(){
+
+ return axios.get(url_)
+    .then(response => response.data)
+    .then((response) => {
+       return response;
+   }).catch((err) => { console.log(err); });
+
+}
+
+test('the name data from github api', () => {
+  expect.assertions(1);
+  return fetchData().then(data => {
+    expect(data.name).toBe('Divyanshu Rawat');
+  });
+});
+
+
+
+// Async test Method by using Async/Await
+
+test('the organization URL data for github api', async () => {
+  expect.assertions(1);
+  const data = await fetchData();
+  expect(data.organizations_url).toBe('https://api.github.com/users/divyanshu-rawat/orgs');
 });
 
 
