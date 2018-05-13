@@ -6,7 +6,7 @@ const intialState = {
 
 export const GithubReducer = (state = intialState , action) =>{
 
-	console.log('In Reducer',action);
+	// console.log('In Reducer',action);
 	
 	switch(action.type){
 

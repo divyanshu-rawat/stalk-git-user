@@ -48,7 +48,7 @@ class App extends React.Component {
 
   render() {
 
-    // console.log('parsed data',this);
+    console.log('parsed data',this);
  
     return (
 
