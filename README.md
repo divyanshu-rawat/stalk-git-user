@@ -20,6 +20,10 @@ Quality Assurance -
 Client Side Testing Framework
 * Jest
 
+Development Operations - 
+* Surge.sh
+* Travis will be added soon.
+
 ### Description
 
 * An application that makes use of Github Api to fetch profile, repository information and displays it in 2 different routes namely Description, Profile.
