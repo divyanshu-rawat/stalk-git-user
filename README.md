@@ -21,7 +21,7 @@ Client Side Testing Framework
 * Jest
 
 Development Operations - 
-* Surge.sh
+* Heroku
 * Travis will be added soon.
 
 ### Description
