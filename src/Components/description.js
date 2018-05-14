@@ -54,9 +54,9 @@ export class Description extends React.Component{
 		if(Object.keys(data).length !== 0){
 			if(this.state.data.length > 1){
 			chart_pic = (
-							<div className = "_m-top _text-align">
+							<div className = "_m-top">
 								<h3>Contributions In The Last Year</h3>
-								<img src={chart} alt="Github chart" />
+								<img src={chart} className = "img-responsive" alt="Github chart" />
 						    </div>
 					);
 			}
@@ -67,13 +67,12 @@ export class Description extends React.Component{
 	    	_html = this.state.data.map((repo,index) => {
 					     	return(
 					     	   <div>
-							  	<div className="card-2 col-lg-5 ">
+							  	<div className="card-2 col-lg-5 col-md-5">
 
 							  		
 		  							<div className="panel panel-default _margin-top">
 			 					      <div className="panel-heading">
 			 					      	<a href = {repo.html_url}> {repo.name} </a>
-			 					      	<span className = "pull-right">Created On <Moment format="YYYY/MM/DD">{repo.created_at}</Moment></span>
 			 					      	</div>
 			 					    </div>
 
@@ -117,13 +116,14 @@ export class Description extends React.Component{
 		return(
 				  <div>
 				  	<Header data = {data}/>
-					  <div>
+				  	<div>
+					  <div className = "chart_ col-lg-offset-3 col-sm-offset-1 col-lg-9 col-md-offset-2 col-md-10 col-xs-12 col-sm-10">
 							{chart_pic}
 					  </div>
-
-				     <div className="custom-panel-css">
+				     <div className="custom-panel-css col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
 					     {_html}
 				    </div>
+				   </div>
 
 			  	  </div>
 		)
