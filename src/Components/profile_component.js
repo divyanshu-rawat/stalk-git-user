@@ -21,11 +21,10 @@ export class Profile extends React.Component{
 		
 		if(Object.keys(data).length !== 0){
 			_html = (
-						<div className = "_mg">
-							<main>
+						<div className = "col-lg-offset-4 col-lg-4 col-md-5 col-sm-offset-3 col-sm-6 col-xs-10 col-xs-offset-2">
 								  <div className="card">
 								    <img src={avatar_url} className="card-image" />
-								    <div className="card-title">
+								    <div className="card-title col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 col-lg-offset-1 col-lg-10 col-md-offset-1 col-md-10">
 								      <h1>{user_name}</h1>
 								      <h2><a href = {blog} >{blog} </a></h2>
 								    </div>
@@ -40,8 +39,7 @@ export class Profile extends React.Component{
 								      <a href="#"><i className="fa fa-soundcloud"></i></a>
 								    </div>
 								  </div>
-							</main>
-						</div>	
+						</div>
 					);
 	    }
 	    else

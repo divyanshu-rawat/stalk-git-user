@@ -4,7 +4,7 @@ import './index.css';
 
 import { Provider } from 'react-redux';
 import {createStore} from 'redux';
-import {Profile} from './Components/profile_pic_component';
+import {Profile} from './Components/profile_component';
 
 import { combineReducers } from 'redux'
 import {GithubReducer} from './Reducers/reducers';

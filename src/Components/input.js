@@ -7,6 +7,7 @@ import '../stylesheets/card.css';
 
 export const Input = (props) => {
 	return(
-			<input className  = "form-control _wid _display-inline" onChange = {props.onChange} /> 
+		
+			<input className  = "form-control _display-inline" onChange = {props.onChange} /> 
 	)
 }

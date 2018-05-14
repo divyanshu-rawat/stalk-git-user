@@ -29,7 +29,6 @@
 }
 
 ._wid{
-  width: 20%;
   margin-bottom: 5px;
 }
 
@@ -37,7 +36,7 @@
   vertical-align: unset;
 }
 ._display-inline{
-  display: inline-block;
+  display: inline-flex;
   margin-right:10px;
 }
 .align-centre{
@@ -87,5 +86,9 @@
 
 ._text-align{
   text-align: center;
+}
+
+._percent_margin{
+  margin-top: 20%;
 }
 

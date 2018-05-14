@@ -57,12 +57,10 @@ class App extends React.Component {
            <Header data = {this.props.GithubReducer.data}/>
         </div>
 
-      <div className="App">
+      <div className="col-lg-offset-4 col-md-offset-4 col-md-5 col-sm-offset-3 col-sm-6 col-lg-4 col-xs-12 _text-align _display-inline _percent_margin">
 
-        <div className = "align-centre">
          <Input value = {this.state.username} onChange = {(e) => {this.handleChange(e)}}/>
          <Button  onClick = {(e)=> {this.handleClick(e)}}/>
-        </div>
 
        </div>
     </div>

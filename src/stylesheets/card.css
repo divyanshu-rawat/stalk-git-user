@@ -3,16 +3,8 @@
   box-sizing: border-box;
 }
 
-main {
-  display: flex;
-  width: 100%;
-  margin: auto;
-  align-items: center;
-}
 
 .card {
-  width: 27%;
-  margin: 0 auto;
   color: #1f2021;
   font-family: 'Roboto', sans-serif;
   font-weight: 349;
@@ -32,11 +24,6 @@ main {
 }
 
 .card-title {
-  display: block;
-  position: relative;
-  width: 70%;
-  margin: 0 auto;
-  padding: 0.2em 1em;
   text-align: center;
   background-color: white;
   border-radius: 0.5em;
