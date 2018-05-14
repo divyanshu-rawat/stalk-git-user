@@ -52,12 +52,14 @@ export class Description extends React.Component{
 		let _html;
 
 		if(Object.keys(data).length !== 0){
+			if(this.state.data.length > 1){
 			chart_pic = (
 							<div className = "_m-top _text-align">
 								<h3>Contributions In The Last Year</h3>
 								<img src={chart} alt="Github chart" />
 						    </div>
 					);
+			}
 	    }
 
 	    if(this.state.data.length > 1){
@@ -122,6 +124,7 @@ export class Description extends React.Component{
 				     <div className="custom-panel-css">
 					     {_html}
 				    </div>
+
 			  	  </div>
 		)
 	}
