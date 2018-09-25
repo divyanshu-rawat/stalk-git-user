@@ -4,8 +4,7 @@
 [![Build Status](https://travis-ci.org/divyanshu-rawat/JS-Testing.svg?branch=master)](https://travis-ci.org/divyanshu-rawat/JS-Testing)
 [![NPM](https://img.shields.io/badge/npm-v3.10.10-blue.svg)](https://www.npmjs.com/package/npm)
 
-### An app built using react-router, react, redux.
-
+### A personal project built with React, Redux and other tools to search users and view their profiles on Github.
 
 Technical Stack - 
 * React
@@ -18,15 +17,19 @@ Application Integrations (Server Side) -
 
 Quality Assurance -
 Client Side Testing Framework
-* Jest
-
+* Jest (Jest is used by Facebook to test all JavaScript code including React applications)
+ 
 Development Operations - 
 * Heroku
-* Travis will be added soon.
+* Travis
+* Docker will be added soon.
+
+##
 
 ### Description
 
 * An application that makes use of Github Api to fetch profile, repository information and displays it in 2 different routes namely Description, Profile.
+* A personal project built with React, Redux and other tools to search users and view their profiles on Github.
 
 ##
 
@@ -58,7 +61,6 @@ Development Operations -
 
 ##
 
-
 ### Contributing
 
 1. Create your **_branch_**: `git checkout -b my-new-feature`
@@ -72,3 +74,5 @@ Development Operations -
 5. **_Enjoy!_**
 
 ##
+
+![Alt Text](https://github.com/divyanshu-rawat/Github-App-Redux/blob/master/Assets/screencast.gif)
