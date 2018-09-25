@@ -6,6 +6,8 @@
 
 ### A personal project built with React, Redux and other tools to search users and view their profiles on Github.
 
+![Alt Text](https://github.com/divyanshu-rawat/Github-App-Redux/blob/master/Assets/screencast.gif)
+
 Technical Stack - 
 * React
 * Redux
@@ -75,4 +77,4 @@ Development Operations -
 
 ##
 
-![Alt Text](https://github.com/divyanshu-rawat/Github-App-Redux/blob/master/Assets/screencast.gif)
+
