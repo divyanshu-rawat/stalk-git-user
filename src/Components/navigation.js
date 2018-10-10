@@ -24,13 +24,13 @@ export const Navbar = props => {
         </div>
         <div className="collapse navbar-collapse" id="myNavbar">
           <ul className="nav navbar-nav">
-            <li>
+            <li className="nav-item active">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="nav-item">
               <Link to="/description">Description</Link>
             </li>
-            <li>
+            <li className="nav-item">
               <Link to="/profile">Profile</Link>
             </li>
           </ul>

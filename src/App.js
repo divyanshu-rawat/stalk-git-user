@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { apiData } from "./ActionTypes";
 import Header from "./Routes";
+import loader from "./Assets/loader.gif"
 import "./App.css";
 
 class App extends React.Component {
@@ -14,22 +15,18 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      username: ""
+      username: "",
+      isLoading: false
     };
   }
 
-  handleClick() {
+  async handleClick() {
+    this.setState({ isLoading: true });
+    
     const URL = "https://api.github.com/users/" + this.state.username;
-    axios
-      .get(URL)
-      .then(response => response.data)
-      .then(response => {
-        const data = response;
-        this.props.apiData(response);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const { data } = await axios(URL);
+    this.setState({ isLoading: false });
+    this.props.apiData(data);
   }
 
   handleChange(event) {
@@ -39,20 +36,33 @@ class App extends React.Component {
   }
 
   render() {
+
+    const {isLoading} = this.state;
+    if (isLoading) {
+      return (
+        <div className="container col-lg-6 col-md-4 col-sm-6 col-9 mx-auto ">
+          <img src={loader} className="" />
+        </div>
+      );
+    }
     return (
-      <div>
+       <div>
         <div>
           <Header />
         </div>
 
-        <div className="col-lg-offset-4 col-md-offset-4 col-md-5 col-sm-offset-3 col-sm-6 col-lg-4 col-xs-12 _text-align _display-inline _percent_margin">
+        <div className = "col-lg-offset-4 col-md-offset-4 col-md-5 col-sm-offset-3 col-sm-6 col-lg-4 col-xs-12">
+           <h3>Enter GitHub Username</h3>
+        </div>
+        <div className="col-lg-offset-4 col-md-offset-4 col-md-5 col-sm-offset-3 col-sm-6 col-lg-4 col-xs-12 ">
+         
           <Input
             value={this.state.username}
             onChange={e => {
               this.handleChange(e);
             }}
           />
-          <Button
+          <Button 
             onClick={e => {
               this.handleClick(e);
             }}

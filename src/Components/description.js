@@ -5,57 +5,53 @@ import axios from "axios";
 import Moment from "react-moment";
 import "../App.css";
 import { Link } from "react-router-dom";
+import loader from "../Assets/loader.gif"
+import _ from 'lodash';
 
-export class Description extends React.Component {
+export default class Description extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      isLoading: false,
+      asyncDone: false
     };
+    this.fetch = this.fetch.bind(this)
   }
 
   componentDidMount() {
-    const data = this.props.data.GithubReducer.data;
-    const login = data.login;
-
-    let url_ = "https://api.github.com/users/" + login + "/repos";
-    axios
-      .get(url_)
-      .then(response => response.data)
-      .then(response => {
-        let data = response;
-        console.log(response);
-        this.setState({ data: data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+    const {data} = this.props.state.rootReducer.profileReducer;
+    const {login} = data;
+    this.setState({ isLoading: !this.state.isLoading });
+    this.fetch(login)
   }
 
-  render() {
-    const data = this.props.data.GithubReducer.data;
-    const bio = data.bio;
-    const login = data.login;
-    const chart = "http://ghchart.rshah.org/" + login;
-    let chart_pic;
-    let _html;
+  async fetch(username){
+    const URL = "https://api.github.com/users/" + username + "/repos";
+    const { data } = await axios(URL);
+    this.setState({ isLoading: !this.state.isLoading });
 
-    if (Object.keys(data).length !== 0) {
-      if (this.state.data.length > 1) {
-        chart_pic = (
-          <div className="_m-top">
-            <h3>Contributions In The Last Year</h3>
-            <img src={chart} className="img-responsive" alt="Github chart" />
-          </div>
-        );
-      }
+    if(data.length == 1){ 
+      return 
     }
+    if(data.length > 1){
+        this.props.repoData(data)
+        this.setState({ asyncDone: true });
+    }
+  }
 
-    if (this.state.data.length > 1) {
-      _html = this.state.data.map((repo, index) => {
+  componentDidUpdate(){}
+
+  render() {
+  
+    let html;
+    if (this.state.asyncDone) {
+
+      const {data} = this.props.state.rootReducer.descriptionReducer
+      html = data.map((repo, index) => {
         return (
-          <div>
+          <div key = {index}>
             <div className="card-2 col-lg-5 col-md-5">
               <div className="panel panel-default _margin-top">
                 <div className="panel-heading">
@@ -96,25 +92,33 @@ export class Description extends React.Component {
         );
       });
     } else {
-      _html = (
-        <div className="_text-align">
-          <h3>
-            {" "}
-            Please Search The User In The <Link to="/">Home</Link> Page.{" "}
-          </h3>
-        </div>
-      );
+
+       const {isLoading} = this.state;
+       if (isLoading) {
+          html =
+            <div className="container col-lg-6 col-md-4 col-sm-6 col-9 mx-auto ">
+              <img src={loader} className="" />
+            </div>
+        }
+        else{
+          html =
+            <div className="_text-align">
+              <h3>
+                {" "}
+                Please search the user in the <Link to="/">Home</Link> page.{" "}
+              </h3>
+            </div>
+        }
+
+      
     }
 
     return (
       <div>
-        <Header data={data} />
+        <Header/>
         <div>
-          <div className="chart_ col-lg-offset-3 col-sm-offset-1 col-lg-9 col-md-offset-2 col-md-10 col-xs-12 col-sm-10">
-            {chart_pic}
-          </div>
           <div className="custom-panel-css col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
-            {_html}
+             {html}
           </div>
         </div>
       </div>

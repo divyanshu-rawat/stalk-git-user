@@ -7,12 +7,9 @@ import { Link } from "react-router-dom";
 import _ from 'lodash';
 
 export default class Profile extends React.Component {
-
-  constructor(props){
-    super(props);
-  }
   render() {
-    const {data} = this.props.state.GithubReducer;
+    console.log('this',this)
+    const {data} = this.props.state.rootReducer.profileReducer;
     const {avatar_url} = data;
     const {userName} = data;
     const {blog} = data;
@@ -24,7 +21,7 @@ export default class Profile extends React.Component {
         <div className="_text-align">
           <h3>
             {" "}
-            Please Search The User In The <Link to="/">Home</Link> Page.{" "}
+             Please search the user in the <Link to="/">Home</Link> page.{" "}
           </h3>
         </div>
      );

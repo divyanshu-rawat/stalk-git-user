@@ -1,3 +1,3 @@
-export const CONST = {
-	'type': 'GET_GITHUB_API_DATA'
-}
+
+export const GET_GITHUB_API_DATA = 'GET_GITHUB_API_DATA';
+export const GET_GITHUB_API_REPO_DATA = 'GET_GITHUB_API_REPO_DATA';
