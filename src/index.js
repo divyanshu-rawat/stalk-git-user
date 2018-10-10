@@ -1,21 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom";
 
-import { Provider } from 'react-redux';
-import {createStore} from 'redux';
-import {Profile} from './Components/profile_component';
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import Profile from "./Containers/profileContainer";
 
-import { combineReducers } from 'redux'
-import {GithubReducer} from './Reducers/reducers';
-import { BrowserRouter as Router,Route, Switch } from 'react-router-dom';
-// import {getRoutes} from './Routes/routes';
-import {Description} from './Components/description';
-import Main from './Main';
-
-
-
-
+import { combineReducers } from "redux";
+import { GithubReducer } from "./Reducers";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Description } from "./Components/description";
+import Main from "./Main";
 
 const rootReducer = combineReducers({ GithubReducer });
 const store = createStore(rootReducer);
@@ -23,19 +17,13 @@ const store = createStore(rootReducer);
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
-     <Switch>
-      <Route exact path="/description" render={() => <Description data = {store.getState()} />}/>
-      <Route exact path="/profile" render={() =>     <Profile data = {store.getState()} />}/>
-      <Route path="/" component={Main} />
-
-     </Switch>
+      <Switch>
+        <Route path="/description" component={Description} />
+        <Route path="/profile"     component={Profile} />
+        <Route path="/" component={Main} />
+      </Switch>
     </Router>
   </Provider>
-)
+);
 
-ReactDOM.render(
-  <Root store={store}/>,
-  document.getElementById('root')
-)
-
-
+ReactDOM.render(<Root store={store} />, document.getElementById("root"));
