@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { Button } from "./Components/button";
 import { Input } from "./Components/input";
 import { connect } from "react-redux";
@@ -16,7 +17,8 @@ class App extends React.Component {
 
     this.state = {
       username: "",
-      isLoading: false
+      isLoading: false,
+      message:false
     };
   }
 
@@ -25,7 +27,7 @@ class App extends React.Component {
     
     const URL = "https://api.github.com/users/" + this.state.username;
     const { data } = await axios(URL);
-    this.setState({ isLoading: false });
+    this.setState({ isLoading: false, message: true });
     this.props.apiData(data);
   }
 
@@ -68,6 +70,11 @@ class App extends React.Component {
             }}
           />
         </div>
+
+        <div className = "col-lg-offset-4 col-md-offset-4 col-md-5 col-sm-offset-3 col-sm-6 col-lg-5 col-xs-12">
+           <h3>{this.state.message && <div>View user profile information at <Link to="/profile">Profile</Link> page.{" "}</div>}</h3>
+        </div>
+
       </div>
     );
   }
