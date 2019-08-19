@@ -1,6 +1,5 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Input from "@material-ui/core/Input";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AccountCircle from "@material-ui/icons/AccountCircle";
@@ -11,7 +10,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const InputWithIcon = () => {
+export const InputWithIcon = props => {
   const classes = useStyles();
 
   return (
@@ -22,10 +21,14 @@ export const InputWithIcon = () => {
             <AccountCircle />
           </Grid>
           <Grid item>
-            <TextField id="input-with-icon-grid" label="github-username" />
+            <TextField
+              id="input-with-icon-grid"
+              label="github-username"
+              onChange={props.onChange}
+            />
           </Grid>
         </Grid>
       </div>
     </div>
   );
-}
+};

@@ -7,8 +7,8 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import rootReducer from "./Reducers";
 import AppRouter from "./Routes";
 
-const Reducer = combineReducers({ rootReducer });
-const store = createStore(Reducer);
+const appReducer = combineReducers({ rootReducer });
+const store = createStore(appReducer);
 
 const Root = ({ store }) => (
   <Provider store={store}>

@@ -1,74 +1,41 @@
-._mg {
-  margin: 10px;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
-._wid {
-  margin-bottom: 5px;
+.m-t-1em {
+    margin-top: 1em;
 }
 
-.vertical-align {
-  vertical-align: unset;
-}
-._display-inline {
-  display: inline-flex;
-  margin-right: 10px;
-}
-.align-centre {
-  text-align: center;
-  margin-top: 20%;
-}
-._user {
-  margin-right: 5px;
-}
-._color {
-  color: white !important;
-}
-.custom-panel-css {
-  margin: 10px;
-}
-
-.card-2 {
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.25);
-  background: #fff;
-  border-radius: 2px;
-  height: 280px;
-  margin: 4%;
-}
-
-._margin-top {
-  margin-top: 2%;
-}
-
-.card-2:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
-}
-
-.marginTop {
-  margin-top: 8px !important;
-}
-
-._mg-left {
-  margin-left: 6px;
-}
-
-._panel-padding {
-  padding: 6px 15px !important;
-  margin-top: auto;
-}
-
-._zero_mr {
-  margin: 0px;
-}
-
-._text-align {
-  text-align: center;
-}
-
-._percent_margin {
-  margin-top: 20%;
+.justify-align-content {
+  justify-content: center;
+  align-items: center;
 }
 
 .secondary-title {
-  opacity: 0.5;
-  font-size: 0.75em;
+  opacity: 0.6;
+  font-weight: 500;
+  font-size: x-large;
+}
+
+.app-container {
+  height: 25em;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-roe {
+  flex-direction: row;
 }

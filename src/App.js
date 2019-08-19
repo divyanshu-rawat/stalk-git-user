@@ -2,14 +2,17 @@ import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
 
+/* Importing components. */
+
 import { BTN } from "./Components/buttonComponent";
 import { InputWithIcon } from "./Components/inputWithIconComponent";
-import { NavBar } from "./Components/navbarComponent";
 
+/* Redux stuff. */
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { apiData } from "./ActionTypes";
 
+/* Application loader.  */
 import loader from "./Assets/loader.gif";
 import "./App.css";
 
@@ -18,17 +21,17 @@ class App extends React.Component {
     super(props);
     this.state = {
       username: "",
-      isLoading: false,
-      message: false
+      showLoader: false
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
   async handleClick() {
-    this.setState({ isLoading: true });
-
-    const URL = "https://api.github.com/users/" + this.state.username;
+    this.setState({ showLoader: true });
+    const { username } = this.state;
+    const URL = `https://api.github.com/users/${username}`;
     const { data } = await axios(URL);
-    this.setState({ isLoading: false, message: true });
+    this.setState({ showLoader: false });
     this.props.apiData(data);
   }
 
@@ -39,34 +42,32 @@ class App extends React.Component {
   }
 
   render() {
-    const { isLoading } = this.state;
-    if (isLoading) {
+    const { showLoader } = this.state;
+    if (showLoader) {
       return (
-        <div className="">
-          <img src={loader} className="" />
+        <div>
+          <img src={loader} />
         </div>
       );
     }
     return (
-      <div>
-        <NavBar />
-        <div className="">
-          <p className="secondary-title">Discover who's upto what...</p>
+      <React.Fragment>
+        <div className="flex flex-col justify-align-content app-container">
+          <div className="justify-align-content flex flex-col">
+            <h3>GitStalk 👋</h3>
+            <p className="secondary-title ">Discover who's upto what...</p>
+          </div>
+          <div className="justify-align-content m-t-1em flex flex-row">
+            <InputWithIcon
+              value={this.state.username}
+              onChange={e => {
+                this.handleChange(e);
+              }}
+            />
+            <BTN onClick={this.handleClick} />
+          </div>
         </div>
-        <div className="">
-          <InputWithIcon
-            value={this.state.username}
-            onChange={e => {
-              this.handleChange(e);
-            }}
-          />
-          <BTN
-            onClick={e => {
-              this.handleClick(e);
-            }}
-          />
-        </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
