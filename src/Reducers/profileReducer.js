@@ -4,7 +4,7 @@ const intialState = {
   data: {}
 };
 
-export const profileReducer = (state = intialState, action) => {
+export const userProfileReducer = (state = intialState, action) => {
   switch (action.type) {
     case t.GET_GITHUB_API_DATA:
       state.data = action.DATA;

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
+
+/* Routing, async stuff. */
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 /* Importing components. */
 
@@ -16,6 +19,10 @@ import { apiData } from "./ActionTypes";
 import loader from "./Assets/loader.gif";
 import "./App.css";
 
+
+/* cached data to prevent apiCalls */
+import json from './cache.json';
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -27,12 +34,22 @@ class App extends React.Component {
   }
 
   async handleClick() {
+    // console.log("json", this);
+    this.props.apiData(json);
+    this.props.history.push("profile");
+    /*
     this.setState({ showLoader: true });
     const { username } = this.state;
     const URL = `https://api.github.com/users/${username}`;
-    const { data } = await axios(URL);
+    try {
+      const { data } = await axios(URL);
+      this.props.apiData(data);
+      this.history.pushState(null, 'profile');
+    } catch (e) {
+      console.error(e);
+    }
     this.setState({ showLoader: false });
-    this.props.apiData(data);
+    */
   }
 
   handleChange(event) {

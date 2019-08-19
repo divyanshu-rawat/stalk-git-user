@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import { profileReducer } from "./profileReducer";
+import { userProfileReducer } from "./profileReducer";
 import { descriptionReducer } from "./descriptionReducer";
 
-export default combineReducers({ descriptionReducer, profileReducer });
+export default combineReducers({ descriptionReducer, userProfileReducer });
