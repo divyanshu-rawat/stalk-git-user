@@ -5,56 +5,53 @@ import axios from "axios";
 import Moment from "react-moment";
 import "../App.css";
 import { Link } from "react-router-dom";
-import loader from "../Assets/loader.gif"
-import _ from 'lodash';
+import loader from "../Assets/loader.gif";
+import _ from "lodash";
 
 export default class Description extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
       isLoading: false,
       asyncDone: false
     };
-    this.fetch = this.fetch.bind(this)
+    this.fetch = this.fetch.bind(this);
   }
 
   componentDidMount() {
-    const {data} = this.props.state.rootReducer.profileReducer;
-    const {login} = data;
+    const { data } = this.props.state.rootReducer.profileReducer;
+    const { login } = data;
     this.setState({ isLoading: !this.state.isLoading });
-    this.fetch(login)
+    this.fetch(login);
   }
 
-  async fetch(username){
+  async fetch(username) {
     const URL = "https://api.github.com/users/" + username + "/repos";
     const { data } = await axios(URL);
     this.setState({ isLoading: !this.state.isLoading });
 
-    if(data.length == 1){ 
-      return 
+    if (data.length == 1) {
+      return;
     }
-    if(data.length > 1){
-        this.props.repoData(data)
-        this.setState({ asyncDone: true });
+    if (data.length > 1) {
+      this.props.repoData(data);
+      this.setState({ asyncDone: true });
     }
   }
 
-  componentDidUpdate(){}
+  componentDidUpdate() {}
 
   render() {
-  
     let html;
     if (this.state.asyncDone) {
-
-      const {data} = this.props.state.rootReducer.descriptionReducer
+      const { data } = this.props.state.rootReducer.descriptionReducer;
       html = data.map((repo, index) => {
         return (
-          <div key = {index}>
-            <div className="card-2 col-lg-5 col-md-5">
-              <div className="panel panel-default _margin-top">
-                <div className="panel-heading">
+          <div key={index}>
+            <div className="">
+              <div className="">
+                <div className="">
                   <a href={repo.html_url}> {repo.name} </a>
                 </div>
               </div>
@@ -92,33 +89,31 @@ export default class Description extends React.Component {
         );
       });
     } else {
-
-       const {isLoading} = this.state;
-       if (isLoading) {
-          html =
-            <div className="container col-lg-6 col-md-4 col-sm-6 col-9 mx-auto ">
-              <img src={loader} className="" />
-            </div>
-        }
-        else{
-          html =
-            <div className="_text-align">
-              <h3>
-                {" "}
-                Please search the user in the <Link to="/">Home</Link> page.{" "}
-              </h3>
-            </div>
-        }
-
-      
+      const { isLoading } = this.state;
+      if (isLoading) {
+        html = (
+          <div className="container col-lg-6 col-md-4 col-sm-6 col-9 mx-auto ">
+            <img src={loader} className="" />
+          </div>
+        );
+      } else {
+        html = (
+          <div className="_text-align">
+            <h3>
+              {" "}
+              Please search the user in the <Link to="/">Home</Link> page.{" "}
+            </h3>
+          </div>
+        );
+      }
     }
 
     return (
       <div>
-        <Header/>
+        <Header />
         <div>
           <div className="custom-panel-css col-lg-12 col-md-12 col-xs-12 col-sm-12 ">
-             {html}
+            {html}
           </div>
         </div>
       </div>
