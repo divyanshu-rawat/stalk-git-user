@@ -1,12 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import { Navbar } from "../Components/navigation";
+import { NavBar } from "../Components/navbarComponent";
 
 function Header(props) {
   return (
     <div>
-      <Navbar data={props.data} />
+      <NavBar data={props.data} />
     </div>
   );
 }
