@@ -1,13 +1,15 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+
 import { BTN } from "./Components/buttonComponent";
-import { Input } from "./Components/input";
+import { InputWithIcon } from "./Components/inputWithIconComponent";
+import { NavBar } from "./Components/navbarComponent";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { apiData } from "./ActionTypes";
-import Header from "./Routes";
+
 import loader from "./Assets/loader.gif";
 import "./App.css";
 
@@ -47,14 +49,12 @@ class App extends React.Component {
     }
     return (
       <div>
-        <div>
-          <Header />
-        </div>
+        <NavBar />
         <div className="">
           <p className="secondary-title">Discover who's upto what...</p>
         </div>
         <div className="">
-          <Input
+          <InputWithIcon
             value={this.state.username}
             onChange={e => {
               this.handleChange(e);
