@@ -1,3 +1,7 @@
+body {
+  font-family: "Rubik";
+}
+
 h1,
 h2,
 h3,
@@ -19,6 +23,10 @@ p {
 
 .m-t-2em {
   margin-top: 2em;
+}
+
+.m-l-1em {
+  margin-left: 1em;
 }
 
 .black-border {
@@ -48,6 +56,24 @@ p {
   flex-direction: column;
 }
 
-.flex-roe {
+.flex-row {
   flex-direction: row;
+}
+
+.profile-picture {
+  height: 44px;
+  width: auto;
+  border-radius: 100%;
+}
+
+.username {
+  color: #333;
+  font-size: 1em;
+  margin-bottom: 0.375em;
+}
+
+.portfolio {
+  color: #5c75f6;
+  text-decoration: none;
+  font-size: 0.875em;
 }
