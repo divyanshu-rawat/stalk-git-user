@@ -2,7 +2,7 @@ const intialState = {
   data: {}
 };
 
-export const descriptionReducer = (state = intialState, action) => {
+const descriptionReducer = (state = intialState, action) => {
   switch (action.type) {
     case "GET_GITHUB_API_REPO_DATA":
       state.data = action.DATA;
@@ -12,3 +12,5 @@ export const descriptionReducer = (state = intialState, action) => {
       return { data: state.data };
   }
 };
+
+export default descriptionReducer;

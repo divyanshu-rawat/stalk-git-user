@@ -10,7 +10,19 @@ p {
 }
 
 .m-t-1em {
-    margin-top: 1em;
+  margin-top: 1em;
+}
+
+.pd-2em {
+  padding: 2em;
+}
+
+.m-t-2em {
+  margin-top: 2em;
+}
+
+.black-border {
+  border: 1px solid black;
 }
 
 .justify-align-content {

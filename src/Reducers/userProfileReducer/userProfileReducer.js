@@ -1,10 +1,10 @@
-import * as t from "../Constants";
+import * as t from "../../Constants";
 
 const intialState = {
   data: {}
 };
 
-export const userProfileReducer = (state = intialState, action) => {
+const userProfileReducer = (state = intialState, action) => {
   switch (action.type) {
     case t.GET_GITHUB_API_DATA:
       state.data = action.DATA;
@@ -14,3 +14,5 @@ export const userProfileReducer = (state = intialState, action) => {
       return { data: state.data };
   }
 };
+
+export default userProfileReducer;

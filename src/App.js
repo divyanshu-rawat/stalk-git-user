@@ -19,9 +19,8 @@ import { apiData } from "./ActionTypes";
 import loader from "./Assets/loader.gif";
 import "./App.css";
 
-
 /* cached data to prevent apiCalls */
-import json from './cache.json';
+import json from "./cache.json";
 
 class App extends React.Component {
   constructor(props) {
@@ -44,11 +43,12 @@ class App extends React.Component {
     try {
       const { data } = await axios(URL);
       this.props.apiData(data);
-      this.history.pushState(null, 'profile');
+      this.setState({ showLoader: false });
+      this.props.history.push("profile");
     } catch (e) {
+      this.setState({ showLoader: false });
       console.error(e);
     }
-    this.setState({ showLoader: false });
     */
   }
 
