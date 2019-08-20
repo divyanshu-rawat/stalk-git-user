@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 
 /* Routing, async stuff. */
-import axios from "axios";
-import { Redirect } from "react-router-dom";
-
 /* Importing components. */
 
 import { BTN } from "./Components/buttonComponent";
@@ -13,10 +10,9 @@ import { InputWithIcon } from "./Components/inputWithIconComponent";
 /* Redux stuff. */
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { apiData } from "./ActionTypes";
+import { getApiData } from "./ActionTypes";
 
 /* Application loader.  */
-import loader from "./Assets/loader.gif";
 import "./App.css";
 
 /* cached data to prevent apiCalls */
@@ -32,19 +28,10 @@ class App extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  async handleClick() {
-    this.setState({ showLoader: true });
+  handleClick() {
     const { username } = this.state;
-    const URL = `https://api.github.com/users/${username}`;
-    try {
-      const { data } = await axios(URL);
-      this.props.apiData(data);
-      this.setState({ showLoader: false });
-      this.props.history.push("profile");
-    } catch (e) {
-      this.setState({ showLoader: false });
-      console.error(e);
-    }
+    this.props.getApiData(username);
+    this.props.history.push("profile");
   }
 
   handleChange(event) {
@@ -54,14 +41,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { showLoader } = this.state;
-    if (showLoader) {
-      return (
-        <div>
-          <img src={loader} />
-        </div>
-      );
-    }
     return (
       <React.Fragment>
         <div className="flex flex-col justify-align-content app-container">
@@ -88,7 +67,7 @@ const mapStateToProps = state => {
   return state;
 };
 const mapDispatchToProps = dispatch => {
-  return bindActionCreators({ apiData }, dispatch);
+  return bindActionCreators({ getApiData }, dispatch);
 };
 
 export default connect(
