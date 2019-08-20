@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
-import description from "./Reducers/descriptionReducer";
-import userProfile from "./Reducers/userProfileReducer";
+import descriptionReducer from "./Reducers/descriptionReducer/descriptionReducer";
+import userProfileReducer from "./Reducers/userProfileReducer/userProfileReducer";
 import * as t from "./Constants";
 
 export default combineReducers({
-  [t.USER_PROFILE]: userProfile.reducer,
-  [t.DESCRIPTION]: description.reducer
+  [t.USER_PROFILE]: userProfileReducer,
+  [t.DESCRIPTION]: descriptionReducer
 });

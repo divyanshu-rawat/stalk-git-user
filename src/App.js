@@ -33,9 +33,12 @@ class App extends React.Component {
   }
 
   async handleClick() {
-    // console.log("json", this);
-    this.props.apiData(json);
-    this.props.history.push("profile");
+    // console.log("json!!", this);
+    const { username } = this.state;
+    const URL = `https://api.github.com/users/${username}`;
+    const { data } = await axios(URL);
+    this.props.apiData(data);
+    // this.props.history.push("profile");
     /*
     this.setState({ showLoader: true });
     const { username } = this.state;
