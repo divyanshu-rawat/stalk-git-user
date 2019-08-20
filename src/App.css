@@ -77,3 +77,41 @@ p {
   text-decoration: none;
   font-size: 0.875em;
 }
+
+.username-profile-picture-wrapper {
+  background: #fff;
+  border: 1px solid #f7f7f7;
+  box-sizing: border-box;
+  border-radius: 2px 2px 0 0;
+  padding: 1em;
+}
+.git-statistics {
+  background: #fff;
+  border-right: 1px solid #f7f7f7;
+  border-bottom: 1px solid #f7f7f7;
+  border-left: 1px solid #f7f7f7;
+  box-sizing: border-box;
+  border-radius: 2px 2px 0 0;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.stats-list-item-heading {
+  font-size: 0.875em;
+  letter-spacing: 0.01em;
+  color: #888;
+}
+
+.stats-list-item-paragraph {
+  font-size: 1em;
+  letter-spacing: 0.01em;
+  color: #555;
+}
