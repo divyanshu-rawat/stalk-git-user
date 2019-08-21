@@ -4,9 +4,9 @@ import loader from "../../Assets/loader.gif";
 export default class Profile extends React.Component {
   constructor(props) {
     super(props);
-    this.userRepositories = this.props.state.USER_PROFILE_REDUCER.data.userRepositories;
-    this.getStars = this.getStars.bind(this);
-    this.getForks = this.getForks.bind(this);
+    const { data } = this.props.state.USER_PROFILE_REDUCER;
+    this.userRepositories = data.userRepositories;
+    this.userProfileInformation = data.userProfileInformation;
   }
 
   getStars() {
@@ -25,6 +25,41 @@ export default class Profile extends React.Component {
     return totalForks;
   }
 
+  getLanguages() {
+    let languages = [];
+    this.userRepositories.forEach(repo => {
+      languages.push(repo.language);
+    });
+    return languages
+      .filter(function(elem, index, self) {
+        return index == self.indexOf(elem);
+      })
+      .filter(Boolean);
+  }
+
+  joinDate() {
+    return this.formatDate(this.userProfileInformation.created_at);
+  }
+
+  lastUpdateDate() {
+    return this.formatDate(this.userProfileInformation.updated_at);
+  }
+
+  formatDate(s) {
+    return new Date(s).toLocaleDateString([], {
+      month: "short",
+      day: "numeric",
+      year: "numeric"
+    });
+  }
+
+  formatTime(t) {
+    return new Date(t).toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
+
   render() {
     const { isFetching } = this.props.state.USER_PROFILE_REDUCER;
     const {
@@ -40,8 +75,8 @@ export default class Profile extends React.Component {
     }
     return (
       <div>
-        <div className="flex flex-row m-t-2em pd-2em black-border">
-          <div className="flex flex-col black-border pd-2em ">
+        <div className="flex flex-row pd-2em black-border">
+          <div className="flex flex-col black-border pd-2em left-container">
             <div className="username-profile-picture-wrapper flex flex-row">
               <div className="profile-picture-wrapper">
                 <img
@@ -50,8 +85,8 @@ export default class Profile extends React.Component {
                 />
               </div>
               <div className="m-l-1em username-wrapper">
-                <p className="username">{userProfileInformation.name}</p>
-                <p className="portfolio">{userProfileInformation.blog}</p>
+                <p className="username-txt">{userProfileInformation.name}</p>
+                <p className="portfolio-txt">{userProfileInformation.blog}</p>
               </div>
             </div>
             <div className="git-statistics">
@@ -82,8 +117,22 @@ export default class Profile extends React.Component {
                 <p className="stats-list-item-paragraph">{this.getForks()}</p>
               </div>
             </div>
-            <div />
-            <div />
+            <div className="user-lang-statistics">
+              {this.getLanguages().map(lang => {
+                return <span key={lang}>{lang}</span>;
+              })}
+            </div>
+            <div className="geolocation-statistics">
+              <div className="m-b-1em joined">
+                <h4>Joined</h4>
+                <p>{this.joinDate()}</p>
+              </div>
+              <div className="m-b-1em location">
+                <h4>Location</h4>
+                <p>{userProfileInformation.location}</p>
+              </div>
+              <span>Last Updated on {this.lastUpdateDate()}</span>
+            </div>
           </div>
           <div className="flex flex-col black-border" />
         </div>

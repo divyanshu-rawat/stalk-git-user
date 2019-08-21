@@ -17,6 +17,10 @@ p {
   margin-top: 1em;
 }
 
+.m-b-1em {
+  margin-bottom: 1em;
+}
+
 .pd-2em {
   padding: 2em;
 }
@@ -30,7 +34,7 @@ p {
 }
 
 .black-border {
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .justify-align-content {
@@ -66,13 +70,13 @@ p {
   border-radius: 100%;
 }
 
-.username {
+.username-txt {
   color: #333;
   font-size: 1em;
   margin-bottom: 0.375em;
 }
 
-.portfolio {
+.portfolio-txt {
   color: #5c75f6;
   text-decoration: none;
   font-size: 0.875em;
@@ -114,4 +118,71 @@ p {
   font-size: 1em;
   letter-spacing: 0.01em;
   color: #555;
+}
+
+.user-lang-statistics {
+  background: #fff;
+  border-right: 1px solid #dcd9d9;
+  border-bottom: 1px solid #dcd9d9;
+  border-left: 1px solid #dcd9d9;
+  box-sizing: border-box;
+  border-radius: 2px 2px 0 0;
+  padding: 0.5em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.user-lang-statistics > span {
+  margin: 0.5em;
+  text-align: center;
+  font-size: 0.75em;
+  letter-spacing: 0.01em;
+  color: #5c75f6;
+  padding: 0.5em;
+  background-color: rgba(92, 117, 246, 0.05);
+  border-radius: 1px;
+  margin-right: 0.5em;
+}
+
+.left-container {
+  margin-right: 2%;
+  width: 28%;
+  min-width: 240px;
+}
+
+.geolocation-statistics {
+  background: #fff;
+  border-right: 1px solid #dcd9d9;
+  border-bottom: 1px solid #dcd9d9;
+  border-left: 1px solid #dcd9d9;
+  box-sizing: border-box;
+  border-radius: 2px 2px 0 0;
+  padding: 1em;
+}
+
+.geolocation-statistics > span {
+  font-size: 0.875em;
+  text-align: right;
+  letter-spacing: 0.01em;
+  color: #aaa;
+}
+
+.joined > h4,
+.location > h4 {
+  font-size: 0.75em;
+  letter-spacing: 0.01em;
+  color: #888;
+}
+
+.joined > p,
+.location > p {
+  font-size: 0.875em;
+  letter-spacing: 0.01em;
+  color: #555;
+  margin-top: 0.5em;
+}
+
+.location > p {
+  color: #5c75f6;
 }
