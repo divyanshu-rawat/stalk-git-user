@@ -8,37 +8,6 @@
 
 https://nameless-springs-59663.herokuapp.com/
 
-### A personal project built with React, Redux and other tools to search users and view their profiles on Github.
-
-![Alt Text](https://github.com/divyanshu-rawat/Github-App-Redux/blob/master/Assets/screencast.gif)
-
-Technical Stack - 
-* React
-* Redux
-* React Router
-* Jest
-
-Application Integrations (Server Side) -
-* Github API
-
-Quality Assurance -
-Client Side Testing Framework
-* Jest (Jest is used by Facebook to test all JavaScript code including React applications)
- 
-Development Operations - 
-* Heroku
-* Travis
-* Docker will be added soon.
-
-##
-
-### Description
-
-* An application that makes use of Github Api to fetch profile, repository information and displays it in 2 different routes namely Description, Profile.
-* A personal project built with React, Redux and other tools to search users and view their profiles on Github.
-
-##
-
 ### Installation Instructions
 
 * clone or download the repo. into any fresh temporary folder.
